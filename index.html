@@ -19,7 +19,7 @@
       <div id="unity-warning"> </div>
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
-        
+       
         <div id="unity-build-title">Sloat_Machine</div>
       </div>
     </div>
@@ -82,8 +82,8 @@
         config.devicePixelRatio = 1;
         unityShowBanner('WebGL builds are not supported on mobile devices.');
       } else {
-        canvas.style.width = "375px";
-        canvas.style.height = "600px";
+        canvas.style.width = "375";
+        canvas.style.height = "600";
       }
       loadingBar.style.display = "block";
 
@@ -94,7 +94,7 @@
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
-         
+          
         }).catch((message) => {
           alert(message);
         });
