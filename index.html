@@ -30,6 +30,10 @@
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
       var warningBanner = document.querySelector("#unity-warning");
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
       // Shows a temporary message banner/ribbon for a few seconds, or
       // a permanent error message on top of the canvas if type=='error'.
       // If type=='warning', a yellow highlight color is used.
@@ -53,6 +57,10 @@
         }
         updateBannerVisibility();
       }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/buildwebgl.loader.js";
       var config = {
@@ -65,12 +73,20 @@
         productVersion: "0.1",
         showBanner: unityShowBanner,
       };
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
       // By default Unity keeps WebGL canvas render target size matched with
       // the DOM size of the canvas element (scaled by window.devicePixelRatio)
       // Set this to false if you want to decouple this synchronization from
       // happening inside the engine, and you would instead like to size up
       // the canvas DOM size and WebGL render target sizes yourself.
       // config.matchWebGLToCanvasSize = false;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         container.className = "unity-mobile";
         // Avoid draining fillrate performance on mobile devices,
@@ -82,6 +98,10 @@
         canvas.style.height = "100%";
       }
       loadingBar.style.display = "block";
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
