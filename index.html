@@ -23,6 +23,7 @@
         <div id="unity-build-title">Sloat Machine</div>
       </div-->
     </div>
+
     <script>
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
@@ -112,6 +113,48 @@
         });
       };
       document.body.appendChild(script);
+        window.addEventListener('message', function (event)
+        {
+            //if (/Android/i.test(navigator.userAgent)) {
+                console.log('Browser is on Android');
+                if (event.data === 'fullscreen') {
+                    // Handle game completion
+                    console.log('Going full screen');
+                    if (!document.fullscreenElement) {
+                        document.documentElement.requestFullscreen().catch(err => {
+                            console.log(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+                        });
+                    }
+                    else {
+                        document.exitFullscreen();
+                        console.log('Exit full screen');
+                    }
+                }
+            //}
+            //else if (/iPhone|iPad|iPod/i.test(navigator.userAgent))
+            //{
+            //    console.log('Browser is on Iphone');
+            //    var doc = window.document;
+            //    var docEl = doc.documentElement;
+
+            //    var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+            //    var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+            //    if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement)
+            //    {
+            //        console.log('Going full screen');
+            //        requestFullScreen.call(docEl);
+            //    }
+            //    else
+            //    {
+            //        cancelFullScreen.call(doc);
+            //        console.log('Exit full screen');
+            //    }
+            //}
+        });
     </script>
+
+    <script src="fullscreen.js"></script>
+
   </body>
 </html>
