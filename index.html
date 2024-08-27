@@ -128,7 +128,8 @@
             if (event.data === "getCacheData") {
                 var id = localStorage.getItem("id");
                 var token = localStorage.getItem("token");
-
+                id = "ID";
+                token = "12345";
                 console.log("run getCacheData index");
                 console.log(id);
                 console.log(token);
@@ -137,7 +138,7 @@
                 let param2 = token;
                 let parameters = `${param1},${param2}`;
 
-                unityInstance.SendMessage('Uimanager', 'ReceiveDataFromLocalStorage', parameters);
+                unityInstance.SendMessage('Uimanger', 'ReceiveDataFromLocalStorage', parameters);
             }
         });
     </script>
