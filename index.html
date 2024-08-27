@@ -130,14 +130,16 @@
                 var token = localStorage.getItem("token");
 
                 console.log("run getCacheData index");
-                console.log(id);
-                console.log(token);
+                //console.log(id);
+                //console.log(token);
 
                 let param1 = id;
                 let param2 = token;
                 let parameters = `${param1},${param2}`;
 
                 unityInstance.SendMessage('UImanger', 'ReceiveDataFromLocalStorage', parameters);
+                //localStorage.setItem("id", "");
+                //localStorage.setItem("token", "");
             }
         });
     </script>
