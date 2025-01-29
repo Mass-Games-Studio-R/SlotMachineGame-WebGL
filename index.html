@@ -57,11 +57,11 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/RoeRoyal-webGL.loader.js";
+      var loaderUrl = buildUrl + "/buildwebgl.loader.js";
       var config = {
-        dataUrl: buildUrl + "/RoeRoyal-webGL.data",
-        frameworkUrl: buildUrl + "/RoeRoyal-webGL.framework.js",
-        codeUrl: buildUrl + "/RoeRoyal-webGL.wasm",
+        dataUrl: buildUrl + "/buildwebgl.data",
+        frameworkUrl: buildUrl + "/buildwebgl.framework.js",
+        codeUrl: buildUrl + "/buildwebgl.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "RootPointers",
         productName: "Sloat Machine",
@@ -112,6 +112,7 @@
                 };
               }).catch((message) => {
                 alert(message);
+                console.log(message);
               });
             };
 
