@@ -30,6 +30,7 @@
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
       var warningBanner = document.querySelector("#unity-warning");
+      var unityInstance;
 
       function unityShowBanner(msg, type) {
         function updateBannerVisibility() {
@@ -88,14 +89,14 @@
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
-        }).then((unityInstance) => {
+        }).then((instance) => {
+          unityInstance = instance;
           loadingBar.style.display = "none";
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
           };
         }).catch((message) => {
-          alert(message);
-          console.log(message);
+          console.error("Unity loading failed:", message);
         });
       };
 
@@ -103,7 +104,7 @@
       
       window.addEventListener("message", function (event) {
         if (!unityInstance) {
-          console.log("Unity instance not yet initialized.");
+          console.warn("Unity instance not yet initialized. Skipping message event.");
           return;
         }
         console.log(event, "testing");
@@ -112,7 +113,7 @@
           console.log("Going full screen");
           if (!document.fullscreenElement) {
             document.documentElement.requestFullscreen().catch((err) => {
-              console.log(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+              console.error(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
             });
           } else {
             document.exitFullscreen();
@@ -121,15 +122,12 @@
         }
 
         if (event.data === "getCacheData") {
-          var id = localStorage.getItem("id");
-          var token = localStorage.getItem("token");
+          var id = localStorage.getItem("id") || "";
+          var token = localStorage.getItem("token") || "";
 
           console.log("run getCacheData index");
 
-          let param1 = id;
-          let param2 = token;
-          let parameters = `${param1},${param2}`;
-
+          let parameters = `${id},${token}`;
           unityInstance.SendMessage('UImanger', 'ReceiveDataFromLocalStorage', parameters);
         }
       });
