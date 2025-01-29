@@ -117,6 +117,44 @@
             };
 
       document.body.appendChild(script);
+        window.addEventListener("message", function (event) {
+            if (!unityInstance) {
+                console.log("Unity instance not yet initialized.");
+                return;
+            }
+            console.log(event, "testing");
+
+            if (event.data === "fullscreen") {
+                console.log("Going full screen");
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen().catch((err) => {
+                        console.log(
+                            `Error attempting to enable full-screen mode: ${err.message} (${err.name})`
+                        );
+                    });
+                } else {
+                    document.exitFullscreen();
+                    console.log("Exit full screen");
+                }
+            }
+
+            if (event.data === "getCacheData") {
+                var id = localStorage.getItem("id");
+                var token = localStorage.getItem("token");
+
+                console.log("run getCacheData index");
+                //console.log(id);
+                //console.log(token);
+
+                let param1 = id;
+                let param2 = token;
+                let parameters = `${param1},${param2}`;
+
+                unityInstance.SendMessage('UImanger', 'ReceiveDataFromLocalStorage', parameters);
+                //localStorage.setItem("id", "");
+                //localStorage.setItem("token", "");
+            }
+        });
 
     </script>
   </body>
